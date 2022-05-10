@@ -27,9 +27,10 @@ Node::Node(int k, int d)
 class cirList
 {
 public:
-    Node* head;
+    Node *head;
     cirList();
-    cirList(Node* newNode);
+    cirList(Node *newNode);
+    Node *ifNodeLies(int k);
 };
 
 cirList::cirList()
@@ -37,9 +38,35 @@ cirList::cirList()
     head = NULL;
 }
 
-cirList::cirList(Node* newNode)
+cirList::cirList(Node *newNode)
 {
     head = newNode;
+}
+
+Node *cirList::ifNodeLies(int k)
+{
+    Node *temp = NULL;
+    Node *ptr = head;
+
+    if (ptr == NULL)
+    {
+        return temp;
+        cout << "Node does not exist" << endl;
+    }
+    else
+    {
+        do
+        {
+            if (ptr->key == k)
+            {
+                temp = ptr;
+            }
+            ptr = ptr->next;
+
+        } while (ptr != head);
+
+        return temp;
+    }
 }
 
 int main()
